@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dashlane-public-api-openapi-original.json
+docs: https://dashlane.github.io/public-api-documentation/
+token_format: Bearer [example key]
+provisioning: Dashlane Admin Console or `dcli team public-api create-key`
+summary:
+  types:
+  - http
+schemes:
+- name: NONE
+  type: http
+  scheme: x-dashlane-auth-none
+  description: Does not require anything to access the endpoint
+  sources:
+  - openapi/dashlane-public-api-openapi-original.json
+- name: PublicAPIToken
+  type: http
+  scheme: bearer
+  description: Bearer authentication with DLP token
+  sources:
+  - openapi/dashlane-public-api-openapi-original.json
