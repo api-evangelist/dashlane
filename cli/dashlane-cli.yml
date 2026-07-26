@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: https://cli.dashlane.com
+name: Dashlane CLI (dcli)
+repo: https://github.com/Dashlane/dashlane-cli
+docs: https://cli.dashlane.com
+description: Command line interface for Dashlane to manage passwords, secure notes,
+  secrets and personal data, and to access team admin features (member reports, audit
+  logs, Dark Web Insights).
+install:
+- method: homebrew
+  command: brew install dashlane/tap/dashlane-cli
+- method: binary
+  command: Download the packaged executable (Windows/macOS/Linux x64) from https://github.com/Dashlane/dashlane-cli/releases
+- method: source
+  command: git clone the repo, then yarn && yarn run build && npm link
+command_groups:
+- group: personal
+  commands:
+  - sync
+  - devices
+  - vault (read secrets, notes, passwords)
+  - secrets (read, exec, inject)
+  - backup
+  - logout
+- group: business
+  commands:
+  - team members
+  - team audit logs
+  - team dark-web-insights
+  - team reports
+  - team public-api create-key
+- group: integrations
+  commands:
+  - ai-agents
+  - github-action
+  - siem
+  - vscode
+key_flows:
+- Provision a Public API key for team endpoints (dcli team public-api create-key).
+- Inject vault secrets into a process/CI (dcli secrets inject / exec).

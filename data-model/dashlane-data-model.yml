@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dashlane-public-api-openapi-original.json
+entities:
+- name: Team
+  description: A Dashlane business/team account (identified by teamUuid in the DLP token).
+  surfaced_by:
+  - teams-Status
+- name: Member
+  description: A user in the team, with role, status, and usage metrics.
+  surfaced_by:
+  - teams-Members
+  key_fields:
+  - email
+- name: Device
+  description: An activated device belonging to a team member.
+  surfaced_by:
+  - teams-MembersDeviceInformation
+  key_fields:
+  - emails
+- name: PasswordHealth
+  description: Aggregate password-health metrics (weak, reused, compromised credentials)
+    for the team over a window of days.
+  surfaced_by:
+  - teams-PasswordHealth
+  key_fields:
+  - numberOfDays
+relationships:
+- from: Team
+  to: Member
+  type: has_many
+- from: Member
+  to: Device
+  type: has_many
+  via: emails
+- from: Team
+  to: PasswordHealth
+  type: has_one
+notes: Schemas are inline in the OpenAPI (no components.schemas); relationships derived
+  from operation request/response shapes. All responses share a { requestId, data }
+  envelope.

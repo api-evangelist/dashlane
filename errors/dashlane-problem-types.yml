@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dashlane-public-api-openapi-original.json
+format: json
+envelope: Errors return application/json (not RFC 9457 problem+json). Successful responses
+  carry a requestId; error bodies describe the failure.
+problems:
+- status: 400
+  title: Invalid request
+  description: The request was malformed or contained invalid parameters.
+  remediation: Verify the request body fields (page/order/orderBy/limit/emails/numberOfDays)
+    and the Authorization header format.
+  source_operations:
+  - openapi/dashlane-public-api-openapi-original.json#teams-Members
+  - openapi/dashlane-public-api-openapi-original.json#teams-MembersDeviceInformation
+- status: 500
+  title: Internal Server Error
+  description: An unexpected error occurred on the Dashlane API server.
+  remediation: Retry with backoff; if persistent contact security@dashlane.com / support.
+  source_operations:
+  - openapi/dashlane-public-api-openapi-original.json#teams-Members
+  - openapi/dashlane-public-api-openapi-original.json#teams-PasswordHealth
+  - openapi/dashlane-public-api-openapi-original.json#teams-Status
+  - openapi/dashlane-public-api-openapi-original.json#time-GetRemoteTime
+- status: 503
+  title: Service Unavailable
+  description: The API is temporarily unavailable (maintenance or overload).
+  remediation: Retry with exponential backoff; check https://status.dashlane.com.
+  source_operations:
+  - openapi/dashlane-public-api-openapi-original.json#teams-Members
+  - openapi/dashlane-public-api-openapi-original.json#teams-Status

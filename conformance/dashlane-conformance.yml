@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dashlane-public-api-openapi-original.json
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; auth is an HTTP bearer DLP token.
+- id: oidc
+  conforms: false
+- id: http-bearer
+  conforms: true
+  evidence: securityScheme PublicAPIToken is type http scheme bearer (DLP token).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses (400/500/503) return application/json, not application/problem+json.
+- id: json-api
+  conforms: false
+- id: pagination
+  conforms: true
+  evidence: teams-Members supports page/limit/order/orderBy request parameters.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header documented; write-free read-only API.
+- id: scim
+  conforms: false
+  evidence: SCIM provisioning is offered as a separate enterprise feature, not part of this Public API spec.

@@ -1,0 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+# Our security address email
+Contact: mailto:security@dashlane.com
+
+# Our bug bounty program
+Contact: https://hackerone.com/dashlane/reports/new?type=team&report_type=vulnerability
+
+# Our security policy
+Policy: https://hackerone.com/dashlane?type=team
+
+# Misc
+Preferred-Languages: en, fr
+Canonical: https://www.dashlane.com/.well-known/security.txt
+Security page: https://www.dashlane.com/security/researchers
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQfYOQRQlOqLqsIvMRMLxaXBUgCbgUCZfgMTgAKCRBMLxaXBUgC
+bm2rAPkBb+uO41+Ytf3K5rV3GTb164494NTXXuF4Jrj1N972zQEAwSnU7tbk4q//
+Ylydmfd10w1qa1KJasQ1c4CmzIBSKAo=
+=NcoY
+-----END PGP SIGNATURE-----

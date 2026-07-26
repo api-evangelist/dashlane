@@ -1,0 +1,18 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/dashlane-public-api-openapi-original.json + https://status.dashlane.com
+versioning:
+  scheme: date-timestamp
+  current: '2026-07-17T15:19:22.696Z'
+  notes: The OpenAPI info.version is an ISO timestamp of the last spec build; the API
+    is served under a single /public path with no version segment.
+  docs: https://dashlane.github.io/public-api-documentation/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation/Sunset policy found for the Public API.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.dashlane.com
+deprecated_operations: []

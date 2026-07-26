@@ -1,27 +1,144 @@
 aid: dashlane
 name: Dashlane
-description: 'Dashlane is a company surfaced as a portfolio company of bessemer-venture-partners and added
-  to the API Evangelist network as a stub for enrichment. Sector: cybersecurity. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: 'Dashlane is a password manager and credential-security platform for individuals,
+  families, and enterprises, protecting against credential reuse, phishing, and account
+  takeover with zero-knowledge encryption, passkey support, and AI-powered phishing
+  detection. For developers, Dashlane publishes a read-only Public API (OpenAPI 3.0)
+  that returns real-time team data — member roles/status/usage metrics, activated
+  devices, and password-health analytics (weak, reused, compromised credentials) —
+  authenticated with a bearer DLP token. Dashlane also ships an open-source CLI (dcli),
+  a GitHub Action for injecting vault secrets into CI/CD, SCIM provisioning, and SSO
+  federation.'
 url: https://raw.githubusercontent.com/api-evangelist/dashlane/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - bessemer-venture-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: portfolio-lead-enriched
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://www.dashlane.com/favicon.ico
 tags:
 - Company
 - Cybersecurity
-apis: []
+- Password Management
+- Identity
+- Security
+- Credential Monitoring
+- Secrets Management
+apis:
+- aid: dashlane:dashlane-teams-api
+  name: Dashlane Teams API
+  description: The Teams API from Dashlane — 4 operation(s) for teams.
+  humanURL: https://dashlane.github.io/public-api-documentation/
+  baseURL: https://api.dashlane.com/public
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/dashlane-teams-api-openapi.yml
+  - type: Documentation
+    url: https://dashlane.github.io/public-api-documentation/
+  - type: APIReference
+    url: https://dashlane.github.io/public-api-documentation/
+- aid: dashlane:dashlane-time-api
+  name: Dashlane Time API
+  description: The Time API from Dashlane — 1 operation(s) for time.
+  humanURL: https://dashlane.github.io/public-api-documentation/
+  baseURL: https://api.dashlane.com/public
+  tags:
+  - Time
+  properties:
+  - type: OpenAPI
+    url: openapi/dashlane-time-api-openapi.yml
+  - type: Documentation
+    url: https://dashlane.github.io/public-api-documentation/
+  - type: APIReference
+    url: https://dashlane.github.io/public-api-documentation/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/dashlane-agentic-access.yml
+- type: Authentication
+  url: authentication/dashlane-authentication.yml
+- type: VulnerabilityDisclosure
+  url: security/dashlane-vulnerability-disclosure.yml
+- type: Security
+  url: https://hackerone.com/dashlane?type=team
+- type: DomainSecurity
+  url: security/dashlane-domain-security.yml
+- type: WellKnown
+  url: well-known/dashlane-well-known.yml
+- type: SecurityTxt
+  url: well-known/dashlane-security.txt
+- type: Packages
+  url: packages/dashlane-packages.yml
+- type: SDKs
+  url: packages/dashlane-packages.yml
+- type: CLI
+  url: cli/dashlane-cli.yml
+- type: MCPServer
+  url: mcp/dashlane-mcp.yml
+- type: LLMsTxt
+  url: llms/dashlane-llms.txt
+- type: Conformance
+  url: conformance/dashlane-conformance.yml
+- type: ErrorCatalog
+  url: errors/dashlane-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/dashlane-lifecycle.yml
+- type: StatusPage
+  url: https://status.dashlane.com
+- type: Conventions
+  url: conventions/dashlane-conventions.yml
+- type: DataModel
+  url: data-model/dashlane-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DeveloperPortal
+  url: https://cli.dashlane.com/
+- type: Documentation
+  url: https://dashlane.github.io/public-api-documentation/
+- type: APIReference
+  url: https://dashlane.github.io/public-api-documentation/
+- type: GettingStarted
+  url: https://cli.dashlane.com/
+- type: Support
+  url: https://support.dashlane.com/
+- type: Blog
+  url: https://www.dashlane.com/blog
+- type: GitHubOrganization
+  url: https://github.com/Dashlane
+- type: Pricing
+  url: https://www.dashlane.com/pricing
+- type: SignUp
+  url: https://app.dashlane.com/register
+- type: TermsOfService
+  url: https://www.dashlane.com/terms
+- type: PrivacyPolicy
+  url: https://www.dashlane.com/privacy
 - type: Website
   url: https://www.dashlane.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

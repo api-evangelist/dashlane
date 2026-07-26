@@ -1,0 +1,16 @@
+{
+  "provider": "dashlane",
+  "sources": [
+    "dashlane-teams-api-openapi.yml",
+    "dashlane-time-api-openapi.yml"
+  ],
+  "outputs": [
+    "dashlane-teams-api-openapi.yml",
+    "dashlane-time-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

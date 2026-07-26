@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: searched
+source: https://cli.dashlane.com/install
+packages:
+- language: javascript
+  registry: homebrew
+  name: dashlane/tap/dashlane-cli
+  url: https://github.com/Dashlane/dashlane-cli
+  install: brew install dashlane/tap/dashlane-cli
+  official: true
+  notes: First-party Dashlane CLI (dcli). Homebrew tap dashlane/tap, formula dashlane-cli.
+- language: javascript
+  registry: github-releases
+  name: dashlane-cli
+  url: https://github.com/Dashlane/dashlane-cli/releases
+  install: Download the packaged executable for Windows/macOS/Linux (x64) from the releases page
+  official: true
+  notes: Standalone packaged binaries. The CLI can also be built from source via yarn (git clone, yarn, yarn run build, npm link).
+- language: yaml
+  registry: github-marketplace
+  name: dashlane/github-action
+  url: https://github.com/marketplace/actions/load-secrets-from-dashlane
+  install: 'uses: dashlane/github-action@v1'
+  official: true
+  notes: Official GitHub Action to inject Dashlane vault secrets into CI/CD workflows.

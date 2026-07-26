@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Dashlane Public API
+  version: 1.0.0
+extends: openapi/dashlane-public-api-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-18'
+    x-apievangelist-provider: dashlane
+    x-apievangelist-categories:
+    - Cybersecurity
+    - Password Management
+    - Identity
+- target: $.tags
+  update:
+  - name: Teams
+    description: Read-only access to team members, devices, password health, and status.
+  - name: Time
+    description: Retrieve the current server UNIX timestamp (unauthenticated).
+- target: $.info
+  update:
+    x-apievangelist-auth: Bearer DLP token (Bearer DLP_teamUuid_accessKey_secretKey), generated in the Admin Console or via `dcli team public-api create-key`.
+    x-apievangelist-response-envelope: Every 200 response wraps its payload in { requestId, data }.

@@ -1,0 +1,1728 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dashlane public API documentation",
+        "description": "This is Dashlane public API documentation",
+        "contact": {
+            "name": "Dashlane API team",
+            "email": "contact@dashlane.com",
+            "url": "https://www.dashlane.com"
+        },
+        "version": "2026-07-17T15:19:22.696Z"
+    },
+    "servers": [
+        {
+            "url": "https://api.dashlane.com/public",
+            "description": "The production API server"
+        }
+    ],
+    "paths": {
+        "/teams/Members": {
+            "post": {
+                "tags": [
+                    "Teams"
+                ],
+                "description": "Get members information of the team",
+                "operationId": "teams-Members",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "page": {
+                                        "description": "Number of the page in results (default: 0)",
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "default": 0
+                                    },
+                                    "order": {
+                                        "description": "ASC or DESC (default: ASC)",
+                                        "type": "string",
+                                        "enum": [
+                                            "ASC",
+                                            "DESC"
+                                        ],
+                                        "default": "ASC"
+                                    },
+                                    "orderBy": {
+                                        "description": "The parameter to sort by (default: email)",
+                                        "type": "string",
+                                        "enum": [
+                                            "joinedDate",
+                                            "email"
+                                        ],
+                                        "default": "email"
+                                    },
+                                    "limit": {
+                                        "description": "Maximum number of results per page (default: 100)",
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100,
+                                        "default": 100
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "members": {
+                                                    "description": "Array of team members",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "email": {
+                                                                "type": "string",
+                                                                "description": "User login"
+                                                            },
+                                                            "status": {
+                                                                "type": "string",
+                                                                "description": "Member status",
+                                                                "enum": [
+                                                                    "accepted",
+                                                                    "proposed",
+                                                                    "removed",
+                                                                    "unproposed"
+                                                                ]
+                                                            },
+                                                            "joinedDate": {
+                                                                "type": "number",
+                                                                "description": "Date when the member accepted the team invite in unix time",
+                                                                "nullable": true
+                                                            },
+                                                            "lastUpdateDate": {
+                                                                "type": "number",
+                                                                "description": "Last updated date of member in unix time",
+                                                                "nullable": true
+                                                            },
+                                                            "role": {
+                                                                "type": "object",
+                                                                "description": "Role of the member",
+                                                                "properties": {
+                                                                    "billingAdmin": {
+                                                                        "type": "boolean",
+                                                                        "description": "Is the user a billing admin"
+                                                                    },
+                                                                    "teamAdmin": {
+                                                                        "type": "boolean",
+                                                                        "description": "Is the user a team admin"
+                                                                    },
+                                                                    "groupManager": {
+                                                                        "type": "boolean",
+                                                                        "description": "Is the user a group manager"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false,
+                                                                "required": [
+                                                                    "billingAdmin",
+                                                                    "teamAdmin",
+                                                                    "groupManager"
+                                                                ]
+                                                            },
+                                                            "invitedDate": {
+                                                                "type": "number",
+                                                                "description": "Date when user was invited in unix time"
+                                                            },
+                                                            "removedDate": {
+                                                                "type": "number",
+                                                                "description": "Date when user was removed in unix time",
+                                                                "nullable": true
+                                                            },
+                                                            "language": {
+                                                                "type": "string",
+                                                                "description": "User's preferred language in ISO 639-1"
+                                                            },
+                                                            "passwordsTotal": {
+                                                                "type": "number",
+                                                                "description": "Number of stored passwords",
+                                                                "nullable": true
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "User's name",
+                                                                "nullable": true
+                                                            },
+                                                            "authentication": {
+                                                                "description": "Authentication information for the user",
+                                                                "type": "object",
+                                                                "nullable": true,
+                                                                "properties": {
+                                                                    "type": {
+                                                                        "type": "string",
+                                                                        "description": "2FA type",
+                                                                        "enum": [
+                                                                            "sso",
+                                                                            "email_token",
+                                                                            "totp_device_registration",
+                                                                            "totp_login"
+                                                                        ]
+                                                                    },
+                                                                    "lastUpdateDate": {
+                                                                        "type": "number",
+                                                                        "description": "When the 2FA method was updated in unix time",
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "passwordHealth": {
+                                                                "type": "object",
+                                                                "description": "Password health information",
+                                                                "properties": {
+                                                                    "score": {
+                                                                        "type": "number",
+                                                                        "description": "The password health score of the user. It's a calculation based on all logins stored in Dashlane with weights given to critical acTotals and compromised, reused, and weak passwords.",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "reusedPasswords": {
+                                                                        "type": "number",
+                                                                        "description": "Number of reused passwords",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "reusedDistinctPasswords": {
+                                                                        "type": "number",
+                                                                        "description": "Number of distinct reused passwords",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "weakPasswords": {
+                                                                        "type": "number",
+                                                                        "description": "Number of weak passwords",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "compromisedPasswords": {
+                                                                        "type": "number",
+                                                                        "description": "Number of compromised passwords",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "averagePasswordStrength": {
+                                                                        "type": "number",
+                                                                        "description": "Average password strength score",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "passwordStrength0_19Total": {
+                                                                        "type": "number",
+                                                                        "description": "Number of passwords between 0 to 19 characters",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "passwordStrength20_39Total": {
+                                                                        "type": "number",
+                                                                        "description": "Number of passwords between 20 to 39 characters",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "passwordStrength40_59Total": {
+                                                                        "type": "number",
+                                                                        "description": "Number of passwords between 40 to 59 characters",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "passwordStrength60_79Total": {
+                                                                        "type": "number",
+                                                                        "description": "Number of passwords between 60 to 79 characters",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "passwordStrength80_100Total": {
+                                                                        "type": "number",
+                                                                        "description": "Number of passwords between 80 to 100 characters",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "safePasswords": {
+                                                                        "type": "number",
+                                                                        "description": "Number of passwords which are considered safe",
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false,
+                                                                "required": [
+                                                                    "score",
+                                                                    "reusedPasswords",
+                                                                    "reusedDistinctPasswords",
+                                                                    "weakPasswords",
+                                                                    "compromisedPasswords",
+                                                                    "averagePasswordStrength",
+                                                                    "passwordStrength0_19Total",
+                                                                    "passwordStrength20_39Total",
+                                                                    "passwordStrength40_59Total",
+                                                                    "passwordStrength60_79Total",
+                                                                    "passwordStrength80_100Total",
+                                                                    "safePasswords"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "status",
+                                                            "email",
+                                                            "role",
+                                                            "name",
+                                                            "authentication",
+                                                            "passwordHealth"
+                                                        ]
+                                                    }
+                                                },
+                                                "page": {
+                                                    "description": "Current page of results",
+                                                    "type": "integer",
+                                                    "minimum": 0
+                                                },
+                                                "pages": {
+                                                    "description": "Total pages of results",
+                                                    "type": "integer",
+                                                    "minimum": 0
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "members",
+                                                "page",
+                                                "pages"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string"
+                                                },
+                                                "message": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "business_error"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "code",
+                                                "message",
+                                                "type"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "PAGE_OUT_OF_RANGE": {
+                                        "summary": "PAGE_OUT_OF_RANGE",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "code": "PAGE_OUT_OF_RANGE",
+                                                    "message": "Page out of range",
+                                                    "type": "business_error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "server_error",
+                                                    "code": "internal_error",
+                                                    "message": "Internal Error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "endpoint_disabled",
+                                                    "code": "endpoint_disabled",
+                                                    "message": "This endpoint has been disabled temporarily"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PublicAPIToken": []
+                    }
+                ],
+                "parameters": [],
+                "x-authentication": [
+                    "PublicAPIToken"
+                ],
+                "x-rate-limit": {
+                    "mode": "enabled",
+                    "count": 120,
+                    "intervalSec": 120,
+                    "property": "accessKey"
+                },
+                "x-feature-group-team": "Setup & Rollout",
+                "x-feature-group-name": "Access Management"
+            }
+        },
+        "/teams/MembersDeviceInformation": {
+            "post": {
+                "tags": [
+                    "Teams"
+                ],
+                "description": "List activated user devices in team",
+                "operationId": "teams-MembersDeviceInformation",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "emails": {
+                                        "type": "array",
+                                        "description": "List of user login emails to get devices for",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "devices": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "Name of device",
+                                                                "nullable": true
+                                                            },
+                                                            "platform": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "server_cli",
+                                                                    "server_macosx",
+                                                                    "server_win",
+                                                                    "desktop_win",
+                                                                    "desktop_macos",
+                                                                    "server_catalyst",
+                                                                    "server_iphone",
+                                                                    "server_ipad",
+                                                                    "server_ipod",
+                                                                    "server_android",
+                                                                    "web",
+                                                                    "webaccess",
+                                                                    "real_website",
+                                                                    "website",
+                                                                    "server_carbon_tests",
+                                                                    "server_wac",
+                                                                    "server_tac",
+                                                                    "server_leeloo",
+                                                                    "server_leeloo_dev",
+                                                                    "server_standalone",
+                                                                    "server_safari",
+                                                                    "unitary_tests",
+                                                                    "userSupport"
+                                                                ],
+                                                                "description": "Platform of device"
+                                                            },
+                                                            "appVersion": {
+                                                                "type": "string",
+                                                                "description": "Version of Dashlane application on device"
+                                                            },
+                                                            "creationDate": {
+                                                                "type": "number",
+                                                                "description": "Creation date of device in unix time"
+                                                            },
+                                                            "lastUpdateDate": {
+                                                                "type": "number",
+                                                                "description": "Last update date of device in unix time"
+                                                            },
+                                                            "lastActivityDate": {
+                                                                "type": "number",
+                                                                "description": "Last activity date of device in unix time"
+                                                            },
+                                                            "userEmail": {
+                                                                "type": "string",
+                                                                "description": "Dashlane login email of devices owner"
+                                                            },
+                                                            "model": {
+                                                                "type": "string",
+                                                                "description": "Device model"
+                                                            },
+                                                            "osVersion": {
+                                                                "type": "string",
+                                                                "description": "Device OS version"
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "name",
+                                                            "platform",
+                                                            "appVersion",
+                                                            "creationDate",
+                                                            "lastUpdateDate",
+                                                            "lastActivityDate",
+                                                            "userEmail"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "devices"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string"
+                                                },
+                                                "message": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "business_error"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "code",
+                                                "message",
+                                                "type"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "EMAILS_NOT_PART_OF_TEAM": {
+                                        "summary": "EMAILS_NOT_PART_OF_TEAM",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "code": "EMAILS_NOT_PART_OF_TEAM",
+                                                    "message": "Some emails provided are not part of the team",
+                                                    "type": "business_error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "server_error",
+                                                    "code": "internal_error",
+                                                    "message": "Internal Error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "endpoint_disabled",
+                                                    "code": "endpoint_disabled",
+                                                    "message": "This endpoint has been disabled temporarily"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PublicAPIToken": []
+                    }
+                ],
+                "parameters": [],
+                "x-authentication": [
+                    "PublicAPIToken"
+                ],
+                "x-rate-limit": {
+                    "mode": "enabled",
+                    "count": 100,
+                    "intervalSec": 120,
+                    "property": "accessKey"
+                },
+                "x-feature-group-team": "Setup & Rollout",
+                "x-feature-group-name": "Access Management"
+            }
+        },
+        "/teams/PasswordHealth": {
+            "post": {
+                "tags": [
+                    "Teams"
+                ],
+                "description": "Get password health information of the team",
+                "operationId": "teams-PasswordHealth",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "numberOfDays": {
+                                        "description": "The number of days to get in the password health history",
+                                        "type": "number",
+                                        "minimum": 1,
+                                        "maximum": 365
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "history": {
+                                                    "type": "array",
+                                                    "description": "Snapshots of the team password health for each day (includes current password health)",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "date": {
+                                                                "description": "The day of the aggregation in YYYY-MM-DD format",
+                                                                "type": "string"
+                                                            },
+                                                            "score": {
+                                                                "description": "The aggregated password health score of the team. It's a calculation based on all logins stored in Dashlane with weights given to critical accounts and compromised, reused, and weak passwords.",
+                                                                "type": "number"
+                                                            },
+                                                            "passwordsTotal": {
+                                                                "description": "The total number of passwords in this team",
+                                                                "type": "number"
+                                                            },
+                                                            "safe": {
+                                                                "description": "The total number of safe passwords in this team",
+                                                                "type": "number"
+                                                            },
+                                                            "weak": {
+                                                                "description": "The total number of weak passwords in this team",
+                                                                "type": "number"
+                                                            },
+                                                            "reused": {
+                                                                "description": "The total number of reused passwords in this team",
+                                                                "type": "number"
+                                                            },
+                                                            "compromised": {
+                                                                "description": "The total number of compromised passwords in this team",
+                                                                "type": "number"
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "date",
+                                                            "score",
+                                                            "passwordsTotal",
+                                                            "safe",
+                                                            "weak",
+                                                            "reused",
+                                                            "compromised"
+                                                        ]
+                                                    }
+                                                },
+                                                "current": {
+                                                    "type": "object",
+                                                    "description": "The current password health of the team, based on the latest data available",
+                                                    "properties": {
+                                                        "score": {
+                                                            "description": "The aggregated password health score of the team. It's a calculation based on all logins stored in Dashlane with weights given to critical accounts and compromised, reused, and weak passwords.",
+                                                            "type": "number"
+                                                        },
+                                                        "passwordsTotal": {
+                                                            "description": "The total number of passwords in this team",
+                                                            "type": "number"
+                                                        },
+                                                        "safe": {
+                                                            "description": "The total number of safe passwords in this team",
+                                                            "type": "number"
+                                                        },
+                                                        "weak": {
+                                                            "description": "The total number of weak passwords in this team",
+                                                            "type": "number"
+                                                        },
+                                                        "reused": {
+                                                            "description": "The total number of reused passwords in this team",
+                                                            "type": "number"
+                                                        },
+                                                        "compromised": {
+                                                            "description": "The total number of compromised passwords in this team",
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "additionalProperties": false,
+                                                    "required": [
+                                                        "score",
+                                                        "passwordsTotal",
+                                                        "safe",
+                                                        "weak",
+                                                        "reused",
+                                                        "compromised"
+                                                    ]
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "history",
+                                                "current"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "server_error",
+                                                    "code": "internal_error",
+                                                    "message": "Internal Error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "endpoint_disabled",
+                                                    "code": "endpoint_disabled",
+                                                    "message": "This endpoint has been disabled temporarily"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PublicAPIToken": []
+                    }
+                ],
+                "parameters": [],
+                "x-authentication": [
+                    "PublicAPIToken"
+                ],
+                "x-rate-limit": {
+                    "mode": "enabled",
+                    "count": 100,
+                    "intervalSec": 120,
+                    "property": "accessKey"
+                },
+                "x-feature-group-team": "Setup & Rollout",
+                "x-feature-group-name": "Enterprise Setup"
+            }
+        },
+        "/teams/Status": {
+            "post": {
+                "tags": [
+                    "Teams"
+                ],
+                "description": "Get the team status",
+                "operationId": "teams-Status",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "seats": {
+                                                    "type": "object",
+                                                    "description": "The seats information",
+                                                    "properties": {
+                                                        "active": {
+                                                            "description": "The number of active seats (active user with account)",
+                                                            "type": "number"
+                                                        },
+                                                        "pending": {
+                                                            "description": "The number of pending seats (invited users and accepted users without account)",
+                                                            "type": "number"
+                                                        },
+                                                        "extraFree": {
+                                                            "description": "The number of extra free seats offered to the team",
+                                                            "type": "number"
+                                                        },
+                                                        "remaining": {
+                                                            "description": "The number of remaining seats (including paid and extra free seats)",
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "additionalProperties": false,
+                                                    "required": [
+                                                        "active",
+                                                        "pending",
+                                                        "extraFree",
+                                                        "remaining"
+                                                    ]
+                                                },
+                                                "creationDate": {
+                                                    "description": "The creation date of the team in unix time",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "The name of the team",
+                                                    "type": "string"
+                                                },
+                                                "sso": {
+                                                    "type": "object",
+                                                    "description": "SSO information",
+                                                    "properties": {
+                                                        "enabled": {
+                                                            "description": "Whether SSO is enabled for the team",
+                                                            "type": "boolean"
+                                                        },
+                                                        "domains": {
+                                                            "description": "The list of SSO domains",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "description": "Domain name",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "usersTotal": {
+                                                                        "description": "The total number of users in the domain",
+                                                                        "type": "number"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false,
+                                                                "required": [
+                                                                    "name",
+                                                                    "usersTotal"
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    "additionalProperties": false,
+                                                    "required": [
+                                                        "enabled",
+                                                        "domains"
+                                                    ]
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "seats",
+                                                "creationDate",
+                                                "name",
+                                                "sso"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "server_error",
+                                                    "code": "internal_error",
+                                                    "message": "Internal Error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "endpoint_disabled",
+                                                    "code": "endpoint_disabled",
+                                                    "message": "This endpoint has been disabled temporarily"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PublicAPIToken": []
+                    }
+                ],
+                "parameters": [],
+                "x-authentication": [
+                    "PublicAPIToken"
+                ],
+                "x-rate-limit": {
+                    "mode": "enabled",
+                    "count": 60,
+                    "intervalSec": 60,
+                    "property": "accessKey"
+                },
+                "x-feature-group-team": "Setup & Rollout",
+                "x-feature-group-name": "Enterprise Setup"
+            }
+        },
+        "/time/GetRemoteTime": {
+            "get": {
+                "tags": [
+                    "Time"
+                ],
+                "description": "Retrieve the UNIX timestamp (in seconds) of the current time according to Dashlane servers",
+                "operationId": "GET-time-GetRemoteTime",
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "timestamp": {
+                                                    "description": "The UNIX timestamp of the current time",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "timestamp"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "server_error",
+                                                    "code": "internal_error",
+                                                    "message": "Internal Error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "endpoint_disabled",
+                                                    "code": "endpoint_disabled",
+                                                    "message": "This endpoint has been disabled temporarily"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "NONE": []
+                    }
+                ],
+                "parameters": [],
+                "x-authentication": [
+                    "NONE"
+                ],
+                "x-former-ws": [
+                    {
+                        "path": "remotetime/get",
+                        "androidSupport": true,
+                        "appleSupport": false,
+                        "webSupport": true,
+                        "assignedCoreTeam": "Platform"
+                    }
+                ],
+                "x-rate-limit": {
+                    "mode": "disabled",
+                    "count": 150,
+                    "intervalSec": 120,
+                    "property": "remoteIP"
+                },
+                "x-feature-group-team": "Server Platform",
+                "x-feature-group-name": "Server Platform"
+            },
+            "post": {
+                "tags": [
+                    "Time"
+                ],
+                "description": "Retrieve the UNIX timestamp (in seconds) of the current time according to Dashlane servers",
+                "operationId": "time-GetRemoteTime",
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "timestamp": {
+                                                    "description": "The UNIX timestamp of the current time",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "timestamp"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "server_error",
+                                                    "code": "internal_error",
+                                                    "message": "Internal Error"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "requestId": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "type"
+                                                ],
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string"
+                                                    },
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "requestId",
+                                        "errors"
+                                    ]
+                                },
+                                "examples": {
+                                    "example": {
+                                        "summary": "example",
+                                        "value": {
+                                            "requestId": "00000000-0000-0000-0000-000000000001",
+                                            "errors": [
+                                                {
+                                                    "type": "endpoint_disabled",
+                                                    "code": "endpoint_disabled",
+                                                    "message": "This endpoint has been disabled temporarily"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "NONE": []
+                    }
+                ],
+                "parameters": [],
+                "x-authentication": [
+                    "NONE"
+                ],
+                "x-former-ws": [
+                    {
+                        "path": "remotetime/get",
+                        "androidSupport": true,
+                        "appleSupport": false,
+                        "webSupport": true,
+                        "assignedCoreTeam": "Platform"
+                    }
+                ],
+                "x-rate-limit": {
+                    "mode": "disabled",
+                    "count": 150,
+                    "intervalSec": 120,
+                    "property": "remoteIP"
+                },
+                "x-feature-group-team": "Server Platform",
+                "x-feature-group-name": "Server Platform"
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "NONE": {
+                "type": "http",
+                "description": "Does not require anything to access the endpoint",
+                "scheme": "x-dashlane-auth-none"
+            },
+            "PublicAPIToken": {
+                "type": "http",
+                "scheme": "bearer",
+                "description": "Bearer authentication with DLP token"
+            }
+        },
+        "schemas": {},
+        "x-common-invalid-request-errors": {
+            "invalid_endpoint": {
+                "code": "invalid_endpoint",
+                "message": "Endpoint doesn't exist",
+                "type": "invalid_request_error"
+            },
+            "unknown_userdevice_key": {
+                "code": "unknown_userdevice_key",
+                "message": "Error during authentication",
+                "type": "invalid_request_error"
+            },
+            "out_of_bounds_timestamp": {
+                "code": "out_of_bounds_timestamp",
+                "message": "Error during authentication",
+                "type": "invalid_request_error"
+            },
+            "invalid_authentication": {
+                "code": "invalid_authentication",
+                "message": "Error during authentication",
+                "type": "invalid_request_error"
+            },
+            "request_malformed": {
+                "code": "request_malformed",
+                "message": "Request is malformed",
+                "type": "invalid_request_error"
+            }
+        }
+    },
+    "tags": []
+}

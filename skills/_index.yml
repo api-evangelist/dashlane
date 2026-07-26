@@ -1,0 +1,11 @@
+generated: '2026-07-18'
+method: generated
+skills:
+- file: dashlane-team-password-health.md
+  name: Audit team password health
+  api: openapi/dashlane-public-api-openapi-original.json
+  operations: [teams-Status, teams-PasswordHealth]
+- file: dashlane-team-member-audit.md
+  name: List team members and their devices
+  api: openapi/dashlane-public-api-openapi-original.json
+  operations: [teams-Members, teams-MembersDeviceInformation]
