@@ -75,6 +75,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/dashlane-public-api-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/dashlane-agentic-access.yml
 - type: Authentication
