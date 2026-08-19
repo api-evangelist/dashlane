@@ -6,10 +6,9 @@ server:
   name: dashlane-public-api
   transport: http
   url: null
-notes: No official hosted MCP server for the Dashlane Public API was found. The Dashlane
-  CLI documents an "AI Agents" integration surface (see https://cli.dashlane.com),
-  but no published MCP manifest. Tools below are candidates derived one-per-operation
-  from the Public API OpenAPI.
+notes: No official hosted MCP server for the Dashlane Public API was found. The Dashlane CLI documents
+  an "AI Agents" integration surface (see https://cli.dashlane.com), but no published MCP manifest. Tools
+  below are candidates derived one-per-operation from the Public API OpenAPI.
 tools:
 - name: teams_members
   description: Get members information of the team
@@ -26,3 +25,9 @@ tools:
 - name: time_get_remote_time
   description: Retrieve the UNIX timestamp of the current server time
   source_operation: openapi/dashlane-public-api-openapi-original.json#time-GetRemoteTime
+deployment:
+  mode: none
+  verified: derived
+  tools: 5
+  checked: '2026-08-12'
+  source: catalog MCP census

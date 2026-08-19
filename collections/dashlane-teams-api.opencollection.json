@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dashlane public API documentation Teams API",
+    "version": "2026-07-17T15:19:22.696Z"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "teams-Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dashlane.com/public/teams/Members",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get members information of the team"
+        },
+        {
+          "info": {
+            "name": "teams-MembersDeviceInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dashlane.com/public/teams/MembersDeviceInformation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List activated user devices in team"
+        },
+        {
+          "info": {
+            "name": "teams-PasswordHealth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dashlane.com/public/teams/PasswordHealth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get password health information of the team"
+        },
+        {
+          "info": {
+            "name": "teams-Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dashlane.com/public/teams/Status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the team status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dashlane public API documentation Teams Time API",
+    "version": "2026-07-17T15:19:22.696Z"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Time",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET-time-GetRemoteTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dashlane.com/public/time/GetRemoteTime"
+          },
+          "docs": "Retrieve the UNIX timestamp (in seconds) of the current time according to Dashlane servers"
+        },
+        {
+          "info": {
+            "name": "time-GetRemoteTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dashlane.com/public/time/GetRemoteTime"
+          },
+          "docs": "Retrieve the UNIX timestamp (in seconds) of the current time according to Dashlane servers"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

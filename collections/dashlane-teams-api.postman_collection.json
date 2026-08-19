@@ -1,0 +1,988 @@
+{
+  "item": [
+    {
+      "id": "3d02076f-da89-4431-9e26-14839da6d7bb",
+      "name": "Teams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fcbff4a3-306c-40c4-9b05-1a1a8c420f1a",
+          "name": "teams-Members",
+          "request": {
+            "name": "teams-Members",
+            "description": {
+              "content": "Get members information of the team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "teams",
+                "Members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"order\": \"ASC\",\n  \"orderBy\": \"email\",\n  \"limit\": 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c0e59fa-5cd5-4310-af07-4017a9f69039",
+              "name": "Successful request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"order\": \"ASC\",\n  \"orderBy\": \"email\",\n  \"limit\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"data\": {\n    \"members\": [\n      {\n        \"status\": \"unproposed\",\n        \"email\": \"string\",\n        \"role\": {\n          \"billingAdmin\": false,\n          \"teamAdmin\": true,\n          \"groupManager\": true\n        },\n        \"name\": \"string\",\n        \"authentication\": {\n          \"type\": \"sso\",\n          \"lastUpdateDate\": 5867.7694250662\n        },\n        \"passwordHealth\": {\n          \"score\": 767.6321865677471,\n          \"reusedPasswords\": 4569.183132412632,\n          \"reusedDistinctPasswords\": 7011.654893048936,\n          \"weakPasswords\": 2158.718460869814,\n          \"compromisedPasswords\": 6556.208499668572,\n          \"averagePasswordStrength\": 9197.853792684731,\n          \"passwordStrength0_19Total\": 7939.2659750579105,\n          \"passwordStrength20_39Total\": 1179.525212562006,\n          \"passwordStrength40_59Total\": 8620.74048817703,\n          \"passwordStrength60_79Total\": 151.21713763611154,\n          \"passwordStrength80_100Total\": 2819.9385515385334,\n          \"safePasswords\": 6725.804624869146\n        },\n        \"joinedDate\": 1950.826883869241,\n        \"lastUpdateDate\": 2794.434361599276,\n        \"invitedDate\": 2581.668413080139,\n        \"removedDate\": 9004.690151980154,\n        \"language\": \"string\",\n        \"passwordsTotal\": 8557.012291808645\n      },\n      {\n        \"status\": \"accepted\",\n        \"email\": \"string\",\n        \"role\": {\n          \"billingAdmin\": false,\n          \"teamAdmin\": false,\n          \"groupManager\": true\n        },\n        \"name\": \"string\",\n        \"authentication\": {\n          \"type\": \"sso\",\n          \"lastUpdateDate\": 7723.5309090366045\n        },\n        \"passwordHealth\": {\n          \"score\": 5426.314685156237,\n          \"reusedPasswords\": 2789.188967990257,\n          \"reusedDistinctPasswords\": 6609.097799219723,\n          \"weakPasswords\": 8357.698068624186,\n          \"compromisedPasswords\": 774.231297593354,\n          \"averagePasswordStrength\": 6752.300031503721,\n          \"passwordStrength0_19Total\": 4532.369803937807,\n          \"passwordStrength20_39Total\": 8139.531105126261,\n          \"passwordStrength40_59Total\": 434.59292804432283,\n          \"passwordStrength60_79Total\": 473.8517661657526,\n          \"passwordStrength80_100Total\": 5038.350813859732,\n          \"safePasswords\": 4548.262428161281\n        },\n        \"joinedDate\": 6317.221373455506,\n        \"lastUpdateDate\": 2918.016795905759,\n        \"invitedDate\": 1750.7337589555184,\n        \"removedDate\": 6976.631770796948,\n        \"language\": \"string\",\n        \"passwordsTotal\": 4017.4250028283323\n      }\n    ],\n    \"page\": 7088,\n    \"pages\": 4489\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77273690-6672-4c31-a7a4-a4ce0c983dce",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"order\": \"ASC\",\n  \"orderBy\": \"email\",\n  \"limit\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"code\": \"PAGE_OUT_OF_RANGE\",\n      \"message\": \"Page out of range\",\n      \"type\": \"business_error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86c57f37-6fd9-43ab-95f9-b24345bf15d3",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"order\": \"ASC\",\n  \"orderBy\": \"email\",\n  \"limit\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"server_error\",\n      \"code\": \"internal_error\",\n      \"message\": \"Internal Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3ef6054-5c4d-47ad-891e-7789cd1412ee",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"order\": \"ASC\",\n  \"orderBy\": \"email\",\n  \"limit\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"endpoint_disabled\",\n      \"code\": \"endpoint_disabled\",\n      \"message\": \"This endpoint has been disabled temporarily\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc517c4a-8437-4bc9-9474-2c4d86207ed8",
+          "name": "teams-Members Device Information",
+          "request": {
+            "name": "teams-Members Device Information",
+            "description": {
+              "content": "List activated user devices in team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "teams",
+                "MembersDeviceInformation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe664372-ab5c-4189-ade8-19fa4173426a",
+              "name": "Successful request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "MembersDeviceInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"data\": {\n    \"devices\": [\n      {\n        \"name\": \"string\",\n        \"platform\": \"server_ipad\",\n        \"appVersion\": \"string\",\n        \"creationDate\": 9473.316698354753,\n        \"lastUpdateDate\": 6997.591021898467,\n        \"lastActivityDate\": 3799.8154241495754,\n        \"userEmail\": \"string\",\n        \"model\": \"string\",\n        \"osVersion\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"platform\": \"server_carbon_tests\",\n        \"appVersion\": \"string\",\n        \"creationDate\": 8408.648887491834,\n        \"lastUpdateDate\": 5173.729232346297,\n        \"lastActivityDate\": 2603.5413082698424,\n        \"userEmail\": \"string\",\n        \"model\": \"string\",\n        \"osVersion\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "462b6f8c-cb3d-4c5d-8fa2-1ca3a2fc6852",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "MembersDeviceInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"code\": \"EMAILS_NOT_PART_OF_TEAM\",\n      \"message\": \"Some emails provided are not part of the team\",\n      \"type\": \"business_error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9545a4b-0d60-4926-a5e9-d55a1f48e2aa",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "MembersDeviceInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"server_error\",\n      \"code\": \"internal_error\",\n      \"message\": \"Internal Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea62f63e-8f66-410f-b4d3-d18b9cc7c019",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "MembersDeviceInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"endpoint_disabled\",\n      \"code\": \"endpoint_disabled\",\n      \"message\": \"This endpoint has been disabled temporarily\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bfc8ac4-c1b0-45a5-93bc-d05113859fec",
+          "name": "teams-Password Health",
+          "request": {
+            "name": "teams-Password Health",
+            "description": {
+              "content": "Get password health information of the team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "teams",
+                "PasswordHealth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numberOfDays\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a674ebed-8809-4046-b5d7-6a2668860262",
+              "name": "Successful request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "PasswordHealth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"numberOfDays\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"data\": {\n    \"history\": [\n      {\n        \"date\": \"string\",\n        \"score\": 9861.379314806825,\n        \"passwordsTotal\": 4415.868924039473,\n        \"safe\": 2163.1423668581674,\n        \"weak\": 7470.395703619961,\n        \"reused\": 9359.46749629729,\n        \"compromised\": 3358.8236758176736\n      },\n      {\n        \"date\": \"string\",\n        \"score\": 7555.827203557288,\n        \"passwordsTotal\": 3493.4212403571887,\n        \"safe\": 3392.794283477142,\n        \"weak\": 2534.4011913231457,\n        \"reused\": 2145.8295129312955,\n        \"compromised\": 1269.626099384359\n      }\n    ],\n    \"current\": {\n      \"score\": 661.3893731316689,\n      \"passwordsTotal\": 2541.259685685282,\n      \"safe\": 2971.9477019020237,\n      \"weak\": 7119.541301148729,\n      \"reused\": 1062.647299803282,\n      \"compromised\": 1997.387381018738\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "548be086-e911-4df8-a05c-f384f565a9f7",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "PasswordHealth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"numberOfDays\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"server_error\",\n      \"code\": \"internal_error\",\n      \"message\": \"Internal Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91829c46-dc77-47fe-88b2-6a94753acf15",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "PasswordHealth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"numberOfDays\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"endpoint_disabled\",\n      \"code\": \"endpoint_disabled\",\n      \"message\": \"This endpoint has been disabled temporarily\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17c04a72-5c08-4796-b8f3-70edd3048a12",
+          "name": "teams-Status",
+          "request": {
+            "name": "teams-Status",
+            "description": {
+              "content": "Get the team status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "teams",
+                "Status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c584f14-d11c-466c-9494-42cf21dfdcc3",
+              "name": "Successful request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"data\": {\n    \"seats\": {\n      \"active\": 992.6545993975899,\n      \"pending\": 3543.9227545704543,\n      \"extraFree\": 1968.2777819805863,\n      \"remaining\": 3372.2440686957266\n    },\n    \"creationDate\": 4281.190730788661,\n    \"name\": \"string\",\n    \"sso\": {\n      \"enabled\": false,\n      \"domains\": [\n        {\n          \"name\": \"string\",\n          \"usersTotal\": 5558.863617407101\n        },\n        {\n          \"name\": \"string\",\n          \"usersTotal\": 490.92236966816637\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8bb85d1-5fdd-4e20-b0f9-0942eacbff15",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"server_error\",\n      \"code\": \"internal_error\",\n      \"message\": \"Internal Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab980d86-5317-4088-bb03-f9ee00879c07",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "teams",
+                    "Status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"endpoint_disabled\",\n      \"code\": \"endpoint_disabled\",\n      \"message\": \"This endpoint has been disabled temporarily\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dashlane.com/public",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "06e91e33-bd4e-43a4-a3a6-98f07d5f0184",
+    "name": "Dashlane public API documentation Teams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is Dashlane public API documentation\n\nContact Support:\n Name: Dashlane API team\n Email: contact@dashlane.com",
+      "type": "text/plain"
+    }
+  }
+}

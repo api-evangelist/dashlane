@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "6703ce85-3574-49fe-9416-33685eb22681",
+      "name": "Time",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8bd7ffe5-fb81-4a4b-ac84-b0ca3d5a72ff",
+          "name": "GET-time-Get Remote Time",
+          "request": {
+            "name": "GET-time-Get Remote Time",
+            "description": {
+              "content": "Retrieve the UNIX timestamp (in seconds) of the current time according to Dashlane servers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "time",
+                "GetRemoteTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "4107d18b-f98a-43e5-abb3-7b3d2ca62916",
+              "name": "Successful request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time",
+                    "GetRemoteTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"data\": {\n    \"timestamp\": 9906\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d299c99d-766a-46c1-a9ae-51020cda9ecc",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time",
+                    "GetRemoteTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"server_error\",\n      \"code\": \"internal_error\",\n      \"message\": \"Internal Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "138549fd-b699-497f-9d36-8e634c586e50",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time",
+                    "GetRemoteTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"endpoint_disabled\",\n      \"code\": \"endpoint_disabled\",\n      \"message\": \"This endpoint has been disabled temporarily\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21efbe81-d1c4-4771-b307-024b65c1d57d",
+          "name": "time-Get Remote Time",
+          "request": {
+            "name": "time-Get Remote Time",
+            "description": {
+              "content": "Retrieve the UNIX timestamp (in seconds) of the current time according to Dashlane servers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "time",
+                "GetRemoteTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "061f9051-c064-473e-ad8f-7b5a061d3dab",
+              "name": "Successful request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time",
+                    "GetRemoteTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"data\": {\n    \"timestamp\": 9906\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "355ad3fa-f0cd-4b3e-884f-c3d31912528a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time",
+                    "GetRemoteTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"server_error\",\n      \"code\": \"internal_error\",\n      \"message\": \"Internal Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e572274a-7f97-46f9-be2d-7ce3ed521fc0",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time",
+                    "GetRemoteTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"00000000-0000-0000-0000-000000000001\",\n  \"errors\": [\n    {\n      \"type\": \"endpoint_disabled\",\n      \"code\": \"endpoint_disabled\",\n      \"message\": \"This endpoint has been disabled temporarily\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dashlane.com/public",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2771f485-fc8b-4b8f-bcf8-f6a9280f567d",
+    "name": "Dashlane public API documentation Teams Time API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is Dashlane public API documentation\n\nContact Support:\n Name: Dashlane API team\n Email: contact@dashlane.com",
+      "type": "text/plain"
+    }
+  }
+}
