@@ -47,6 +47,8 @@ apis:
   humanURL: https://dashlane.github.io/public-api-documentation/
   baseURL: https://api.dashlane.com/public
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
