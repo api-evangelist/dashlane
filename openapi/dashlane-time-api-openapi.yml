@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Dashlane public API documentation Teams Time API
+  title: Dashlane public API documentation Time API
   description: This is Dashlane public API documentation
   contact:
     name: Dashlane API team
@@ -127,6 +127,8 @@ paths:
         property: remoteIP
       x-feature-group-team: Server Platform
       x-feature-group-name: Server Platform
+      summary: GET time get remote time
+      x-summary-source: derived
     post:
       tags:
       - Time
@@ -240,6 +242,8 @@ paths:
         property: remoteIP
       x-feature-group-team: Server Platform
       x-feature-group-name: Server Platform
+      summary: Time get remote time
+      x-summary-source: derived
 components:
   securitySchemes:
     NONE:
