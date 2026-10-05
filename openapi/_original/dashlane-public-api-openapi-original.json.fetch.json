@@ -1,0 +1,12 @@
+{
+ "url": "https://get.dashlane.com/public-api/openapi.json",
+ "requested_url": "https://get.dashlane.com/public-api/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 98865,
+ "sha256": "2465d75daa3cab009e8d67fa881d2a6e43a358f73790c09899d20ef7e0e5f9c6",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
