@@ -39,3 +39,59 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: dashlane-winget-windows-package-manager
+  label: winget (Windows Package Manager)
+  partner_name: winget (Windows Package Manager)
+  category: official CLI (winget (Windows Package Manager))
+  type: register
+  channel: package-registry
+  evidence: https://github.com/microsoft/winget-pkgs/tree/master/manifests/d/Dashlane/CLI
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: winget (Windows Package Manager) (public package index)
+    spec_file: null
+    packages:
+    - name: Dashlane.CLI
+      kind: manifest
+      version: 6.2642.0
+      released: '2026-10-13'
+      lapsed: false
+      page: https://github.com/microsoft/winget-pkgs/tree/master/manifests/d/Dashlane/CLI
+      cli: 'winget: Command line interface for Dashlane. Access your secrets in your terminal, serve'
+      repo_leg: domain:dashlane.com
+      publisher_leg: artifact-github-org:dashlane
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: dashlane-cisa-secure-by-design-pledge
+  label: CISA Secure by Design Pledge
+  partner_name: CISA Secure by Design Pledge
+  category: secure-by-design software pledge
+  type: register
+  channel: standard-directory
+  evidence: https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CISA Secure by Design Pledge signers (cisa.gov/securebydesign/pledge)
+    standard: 'CISA Secure by Design Pledge (seven goals: MFA, default passwords, vulnerability classes, patches,
+      disclosure policy, CVEs, evidence of intrusions)'
+    spec_file: null
+    role: secure-by-design-pledge-signer
+    registered_name: Dashlane
+    matched_domain: dashlane.com
+    matched_by: domain
+    signal_note: 'participation only: a voluntary public pledge listed by CISA; not an audit or conformance result
+      (no certified_products, no tier)'
+    detected_by: sweep-cloud-security-star.py
+    detected: '2026-10-20'
+    identity: wikidata Q18149120 'Dashlane' P856 https://www.dashlane.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
